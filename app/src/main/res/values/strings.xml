@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">unit_test</string>
+
+    // bottom navigation item text
+    <string name="bottom_navigation_movie_info">영화 정보</string>
+    <string name="bottom_navigation_movie_star_info">영화인 정보</string>
+
 </resources>
