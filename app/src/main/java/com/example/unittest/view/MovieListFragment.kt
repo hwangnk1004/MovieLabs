@@ -17,7 +17,6 @@ class MovieListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("nkh","onViewCreated")
         initRecyclerView()
         initViewModel()
         subscribeUi()
@@ -44,7 +43,6 @@ class MovieListFragment : Fragment() {
 
     private fun subscribeUi() {
         movieListViewModel.movieListData.observe(viewLifecycleOwner) {
-            Log.d("nkh", "test!! ${it.movieList?.get(0)?.movieName}")
         }
     }
 

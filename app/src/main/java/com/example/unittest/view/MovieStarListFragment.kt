@@ -43,7 +43,6 @@ class MovieStarListFragment : Fragment() {
 
     private fun subscribeUi() {
         movieStarListViewModel.movieStarListData.observe(viewLifecycleOwner) {
-            Log.d("nkh", "test!! ${it.movieStar?.get(0)?.movieStarName}")
         }
     }
 }

@@ -20,7 +20,6 @@ class MovieListViewModel : ViewModel() {
     fun fetchMovieList() {
         viewModelScope.launch {
             val result: MovieListResponseData? = repo.fetchMovieList()
-            Log.d("nkh", "result : ${result?.movieListResult?.movieList?.get(0)?.movieName}")
             result?.movieListResult?.let {
                 _movieListData.value = it
             }

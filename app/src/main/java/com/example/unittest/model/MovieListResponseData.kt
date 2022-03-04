@@ -14,21 +14,21 @@ data class MovieListData(
 
 data class MovieList(
     @SerializedName("movieNm")
-    val movieName : String? = null,
+    val movieName: String? = null,
 
     @SerializedName("movieNmEn")
-    val movieEnglishName : String? = null,
+    val movieEnglishName: String? = null,
 
     @SerializedName("prdtYear")
-    val movieProductYear : String? = null,
+    val movieProductYear: String? = null,
 
     @SerializedName("typeNm")
-    val movieType : String? = null,
+    val movieType: String? = null,
 
     @SerializedName("nationAlt")
-    val movieNation : String? = null,
+    val movieNation: String? = null,
 
     @SerializedName("genreAlt")
-    val movieKind : String? = null,
+    val movieKind: String? = null,
 
-)
+    )
