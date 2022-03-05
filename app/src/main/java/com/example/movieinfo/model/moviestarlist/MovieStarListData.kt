@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieStarListData(
     @SerializedName("peopleList")
-    val movieStar: List<MovieStarList>? = null
+    val movieStar: List<MovieStar>?
 )

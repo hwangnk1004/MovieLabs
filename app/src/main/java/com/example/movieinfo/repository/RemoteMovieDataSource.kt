@@ -10,7 +10,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.await
-import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RemoteMovieDataSource : MovieDataSource {
@@ -34,7 +33,6 @@ class RemoteMovieDataSource : MovieDataSource {
     }
 
     override suspend fun fetchMovieStarList(): MovieStarListResponseData? {
-        return runCatching { movieApi.fetchMovieStarList(KEY).awaitResponse() }.getOrNull()
-            ?.body()
+        return runCatching { movieApi.fetchMovieStarList(KEY).await() }.getOrNull()
     }
 }

@@ -2,23 +2,23 @@ package com.example.movieinfo.model.movielist
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieList(
+data class Movie(
     @SerializedName("movieNm")
-    val movieName: String = "",
+    val movieName: String?,
 
     @SerializedName("movieNmEn")
-    val movieEnglishName: String = "",
+    val movieEnglishName: String?,
 
     @SerializedName("prdtYear")
-    val movieProductYear: String = "",
+    val movieProductYear: String?,
 
     @SerializedName("typeNm")
-    val movieType: String = "",
+    val movieType: String?,
 
     @SerializedName("nationAlt")
-    val movieNation: String = "",
+    val movieNation: String?,
 
     @SerializedName("genreAlt")
-    val movieKind: String = "",
+    val movieKind: String?
 
-    )
+)
