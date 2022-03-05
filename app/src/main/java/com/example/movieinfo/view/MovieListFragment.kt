@@ -1,4 +1,4 @@
-package com.example.unittest.view
+package com.example.movieinfo.view
 
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.unittest.databinding.FragmentMovieListBinding
-import com.example.unittest.viewmodel.MovieListViewModel
+import com.example.movieinfo.databinding.FragmentMovieListBinding
+import com.example.movieinfo.viewmodel.MovieListViewModel
 
 class MovieListFragment : Fragment() {
 
@@ -38,11 +38,11 @@ class MovieListFragment : Fragment() {
     private fun initViewModel() {
         movieListViewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
         binding.lifecycleOwner = this
-        binding.movieListViewModel = movieListViewModel
     }
 
     private fun subscribeUi() {
         movieListViewModel.movieListData.observe(viewLifecycleOwner) {
+
         }
     }
 

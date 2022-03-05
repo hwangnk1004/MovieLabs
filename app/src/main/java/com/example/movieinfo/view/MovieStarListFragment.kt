@@ -1,14 +1,13 @@
-package com.example.unittest.view
+package com.example.movieinfo.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.unittest.databinding.FragmentMovieStarListBinding
-import com.example.unittest.viewmodel.MovieStarListViewModel
+import com.example.movieinfo.databinding.FragmentMovieStarListBinding
+import com.example.movieinfo.viewmodel.MovieStarListViewModel
 
 class MovieStarListFragment : Fragment() {
 
@@ -38,7 +37,6 @@ class MovieStarListFragment : Fragment() {
     private fun initViewModel() {
         movieStarListViewModel = ViewModelProvider(this)[MovieStarListViewModel::class.java]
         binding.lifecycleOwner = this
-        binding.movieStarListViewModel = MovieStarListViewModel()
     }
 
     private fun subscribeUi() {

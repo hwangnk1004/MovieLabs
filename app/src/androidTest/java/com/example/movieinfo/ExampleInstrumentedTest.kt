@@ -1,4 +1,4 @@
-package com.example.unittest
+package com.example.movieinfo
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

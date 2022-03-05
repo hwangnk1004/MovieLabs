@@ -1,4 +1,4 @@
-package com.example.unittest
+package com.example.movieinfo
 
 import org.junit.Test
 

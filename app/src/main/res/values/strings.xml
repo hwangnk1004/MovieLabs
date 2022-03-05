@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">unit_test</string>
+    <string name="app_name">movieInfo</string>
 
     // bottom navigation item text
     <string name="bottom_navigation_movie_info">영화 정보</string>

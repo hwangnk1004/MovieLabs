@@ -1,14 +1,15 @@
-package com.example.unittest.repository
+package com.example.movieinfo.repository
 
-import com.example.unittest.model.MovieListResponseData
-import com.example.unittest.model.MovieStarListResponseData
-import com.example.unittest.network.ApiUrls
-import com.example.unittest.network.ApiUrls.KEY
-import com.example.unittest.network.MovieApi
-import com.example.unittest.source.MovieDataSource
+import com.example.movieinfo.model.movielist.MovieListResponseData
+import com.example.movieinfo.model.moviestarlist.MovieStarListResponseData
+import com.example.movieinfo.network.ApiUrls
+import com.example.movieinfo.network.ApiUrls.KEY
+import com.example.movieinfo.network.MovieApiService
+import com.example.movieinfo.source.MovieDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.await
 import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -26,15 +27,14 @@ class RemoteMovieDataSource : MovieDataSource {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private var movieApi: MovieApi = retrofit.create(MovieApi::class.java)
+    private var movieApi: MovieApiService = retrofit.create(MovieApiService::class.java)
 
     override suspend fun fetchMovieList(): MovieListResponseData? {
-        return kotlin.runCatching { movieApi.fetchMovieList(KEY).awaitResponse() }.getOrNull()
-            ?.body()
+        return runCatching { movieApi.fetchMovieList(KEY).await() }.getOrNull()
     }
 
     override suspend fun fetchMovieStarList(): MovieStarListResponseData? {
-        return kotlin.runCatching { movieApi.fetchMovieStarList(KEY).awaitResponse() }.getOrNull()
+        return runCatching { movieApi.fetchMovieStarList(KEY).awaitResponse() }.getOrNull()
             ?.body()
     }
 }

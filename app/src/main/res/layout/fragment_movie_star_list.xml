@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movie_star_list_fragment"
+            type="com.example.movieinfo.view.MovieListFragment" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,20 +16,14 @@
         tools:context=".view.MovieStarListFragment">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="test12" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fragment2"
+            android:textSize="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <data>
-
-        <variable
-            name="movie_star_list_fragment"
-            type="com.example.unittest.view.MovieListFragment" />
-
-        <variable
-            name="movie_star_list_view_model"
-            type="com.example.unittest.viewmodel.MovieStarListViewModel" />
-    </data>
 </layout>

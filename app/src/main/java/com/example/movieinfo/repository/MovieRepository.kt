@@ -1,8 +1,8 @@
-package com.example.unittest.repository
+package com.example.movieinfo.repository
 
-import com.example.unittest.model.MovieListResponseData
-import com.example.unittest.model.MovieStarListResponseData
-import com.example.unittest.source.MovieDataSource
+import com.example.movieinfo.model.movielist.MovieListResponseData
+import com.example.movieinfo.model.moviestarlist.MovieStarListResponseData
+import com.example.movieinfo.source.MovieDataSource
 
 class MovieRepository(private val source: MovieDataSource) {
 

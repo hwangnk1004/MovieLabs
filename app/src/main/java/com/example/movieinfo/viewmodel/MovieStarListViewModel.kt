@@ -1,13 +1,13 @@
-package com.example.unittest.viewmodel
+package com.example.movieinfo.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.unittest.model.MovieStarListData
-import com.example.unittest.model.MovieStarListResponseData
-import com.example.unittest.repository.MovieRepository
-import com.example.unittest.repository.RemoteMovieDataSource
+import com.example.movieinfo.model.moviestarlist.MovieStarListData
+import com.example.movieinfo.model.moviestarlist.MovieStarListResponseData
+import com.example.movieinfo.repository.MovieRepository
+import com.example.movieinfo.repository.RemoteMovieDataSource
 import kotlinx.coroutines.launch
 
 class MovieStarListViewModel : ViewModel() {

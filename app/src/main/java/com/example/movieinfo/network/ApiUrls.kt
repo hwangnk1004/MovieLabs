@@ -1,4 +1,4 @@
-package com.example.unittest.network
+package com.example.movieinfo.network
 
 object ApiUrls {
     const val BASE_URL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/"
