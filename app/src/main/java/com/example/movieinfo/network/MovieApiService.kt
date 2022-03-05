@@ -9,8 +9,15 @@ import retrofit2.http.Query
 interface MovieApiService {
 
     @GET("movie/searchMovieList.json")
-    fun fetchMovieList(@Query("key") key: String): Call<MovieListResponseData>
+    fun fetchMovieList(
+        @Query("key") key: String,
+        @Query("itemPerPage") curPage: Int
+    ): Call<MovieListResponseData>
 
     @GET("people/searchPeopleList.json")
-    fun fetchMovieStarList(@Query("key") key: String): Call<MovieStarListResponseData>
+    fun fetchMovieStarList(
+        @Query("key") key: String,
+        @Query("itemPerPage") curPage: Int
+    ): Call<MovieStarListResponseData>
+
 }

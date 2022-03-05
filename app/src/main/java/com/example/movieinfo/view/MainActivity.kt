@@ -1,6 +1,7 @@
 package com.example.movieinfo.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.movieinfo.R
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    bottomNavigation.menu.getItem(position).isCheckable = true
+                    bottomNavigation.menu.getItem(position).isChecked = true
                 }
             })
         }

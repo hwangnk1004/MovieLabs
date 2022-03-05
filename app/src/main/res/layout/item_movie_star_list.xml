@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="movie_star_list_item"
+            type="com.example.movieinfo.model.moviestarlist.MovieStarListData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/movie_star_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/item_movie_star_list_name"
+            android:textColor="@color/movie_black"
+            android:textSize="@dimen/item_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/movie_star_name_input_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/movie_star_name_input_text_view" />
+
+        <TextView
+            android:id="@+id/movie_star_name_input_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/movie_black"
+            android:textSize="@dimen/item_input"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/movie_star_list_filmography"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/movie_star_list_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_movie_star_list_role"
+            android:textColor="@color/movie_black"
+            android:textSize="@dimen/item_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/movie_star_list_input_role"
+            app:layout_constraintStart_toStartOf="@id/movie_star_name_text_view"
+            app:layout_constraintTop_toTopOf="@id/movie_star_list_input_role" />
+
+        <TextView
+            android:id="@+id/movie_star_list_input_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/movie_black"
+            android:textSize="@dimen/item_input"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/movie_star_list_filmography"
+            app:layout_constraintTop_toBottomOf="@id/movie_star_name_input_text_view" />
+
+
+        <TextView
+            android:id="@+id/movie_star_list_filmography"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_movie_star_list_filmography"
+            android:textColor="@color/movie_black"
+            android:textSize="@dimen/item_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/movie_star_list_input_filmography"
+            app:layout_constraintStart_toStartOf="@id/movie_star_list_role"
+            app:layout_constraintTop_toTopOf="@id/movie_star_list_input_filmography" />
+
+        <TextView
+            android:id="@+id/movie_star_list_input_filmography"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/movie_black"
+            android:textSize="@dimen/item_input"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_star_list_filmography"
+            app:layout_constraintTop_toBottomOf="@id/movie_star_list_input_role" />
+
+
+        <View
+            android:id="@+id/movie_star_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_view_height"
+            android:layout_marginTop="20dp"
+            android:background="@color/movie_view_grey"
+            app:layout_constraintTop_toBottomOf="@id/movie_star_list_input_filmography" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

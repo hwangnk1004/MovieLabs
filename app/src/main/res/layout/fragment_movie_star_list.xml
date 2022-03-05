@@ -5,25 +5,47 @@
 
         <variable
             name="movie_star_list_fragment"
-            type="com.example.movieinfo.view.MovieListFragment" />
+            type="com.example.movieinfo.view.MovieStarListFragment" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".view.MovieStarListFragment">
 
         <TextView
+            android:id="@+id/movie_star_list_title_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fragment2"
-            android:textSize="35dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="20dp"
+            android:text="@string/movie_star_list_title"
+            android:textColor="@color/movie_black"
+            android:textSize="30dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/movie_star_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/movie_black"
+            app:layout_constraintTop_toBottomOf="@id/movie_star_list_title_text_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_star_list_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_star_list_view"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

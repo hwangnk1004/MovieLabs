@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.movieinfo.adapter.MovieStarListRecyclerViewAdapter
 import com.example.movieinfo.databinding.FragmentMovieStarListBinding
 import com.example.movieinfo.viewmodel.MovieStarListViewModel
 
@@ -14,14 +16,7 @@ class MovieStarListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieStarListBinding
     private val movieStarListViewModel: MovieStarListViewModel by viewModels()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
-        initViewModel()
-        subscribeUi()
-        movieStarListViewModel.fetchMovieStarList()
-    }
+    private lateinit var movieStarListRecyclerViewAdapter: MovieStarListRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +26,37 @@ class MovieStarListFragment : Fragment() {
         return binding.root
     }
 
-    private fun initRecyclerView() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModel()
+        movieStarListViewModel.fetchMovieStarList()
+        initRecyclerView()
+        subscribeUi()
 
+    }
+
+    private fun initRecyclerView() {
+        movieStarListRecyclerViewAdapter = MovieStarListRecyclerViewAdapter()
+
+        binding.movieStarListRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            isNestedScrollingEnabled = false
+            adapter = movieStarListRecyclerViewAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        || newState == RecyclerView.SCROLL_STATE_DRAGGING
+                    ) {
+                        if (recyclerView.canScrollVertically(-1).not()) {
+                            movieStarListViewModel.fetchInit()
+                        } else if (recyclerView.canScrollVertically(1).not()) {
+                            movieStarListViewModel.fetchMore()
+                        }
+                    }
+                }
+            })
+        }
     }
 
     private fun initViewModel() {
@@ -41,6 +65,7 @@ class MovieStarListFragment : Fragment() {
 
     private fun subscribeUi() {
         movieStarListViewModel.movieStarListData.observe(viewLifecycleOwner) {
+            movieStarListRecyclerViewAdapter.movieStarList = it
         }
     }
 }

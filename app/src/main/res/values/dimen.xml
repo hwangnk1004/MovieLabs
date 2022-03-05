@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="item_title">15dp</dimen>
+    <dimen name="item_input">18dp</dimen>
+    <dimen name="item_view_height">8dp</dimen>
+
+
+</resources>
