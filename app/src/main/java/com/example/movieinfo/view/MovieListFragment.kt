@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.example.movieinfo.databinding.FragmentMovieListBinding
 import com.example.movieinfo.viewmodel.MovieListViewModel
 
 class MovieListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieListBinding
-    private lateinit var movieListViewModel: MovieListViewModel
+    private val movieListViewModel: MovieListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +36,6 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        movieListViewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
         binding.lifecycleOwner = this
     }
 
@@ -48,3 +47,5 @@ class MovieListFragment : Fragment() {
 
 
 }
+
+
