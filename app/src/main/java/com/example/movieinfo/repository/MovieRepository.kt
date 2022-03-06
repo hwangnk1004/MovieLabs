@@ -9,13 +9,23 @@ class MovieRepository(private val source: MovieDataSource) {
     private var movieListNextPage = 1
     private var movieStarListNextPage = 1
 
-    suspend fun fetchMovieList(top:Boolean): MovieListResponseData? {
-        if (top) movieListNextPage = 1
-        return source.fetchMovieList(10 * movieListNextPage++)
+    suspend fun fetchMovieList(top: Boolean): MovieListResponseData? {
+        return when {
+            top -> {
+                movieListNextPage--
+                source.fetchMovieList(if (movieListNextPage < 1) 1 else movieListNextPage)
+            }
+            else -> source.fetchMovieList(movieListNextPage++)
+        }
     }
 
-    suspend fun fetchMovieStarList(top:Boolean): MovieStarListResponseData? {
-        if (top) movieStarListNextPage = 1
-        return source.fetchMovieStarList(10 * movieStarListNextPage++)
+    suspend fun fetchMovieStarList(top: Boolean): MovieStarListResponseData? {
+        return when {
+            top -> {
+                movieStarListNextPage--
+                source.fetchMovieStarList(if (movieStarListNextPage < 1) 1 else movieStarListNextPage)
+            }
+            else -> source.fetchMovieStarList(movieStarListNextPage++)
+        }
     }
 }

@@ -1,6 +1,5 @@
 package com.example.movieinfo.repository
 
-import android.util.Log
 import com.example.movieinfo.model.movielist.MovieListResponseData
 import com.example.movieinfo.model.moviestarlist.MovieStarListResponseData
 import com.example.movieinfo.network.ApiUrls
@@ -30,12 +29,12 @@ class RemoteMovieDataSource : MovieDataSource {
     private var movieApi: MovieApiService = retrofit.create(MovieApiService::class.java)
 
     override suspend fun fetchMovieList(index: Int): MovieListResponseData? {
-        if (index > 100) return null
+        if (index < 0 || index > 100) return null
         return runCatching { movieApi.fetchMovieList(KEY, index).await() }.getOrNull()
     }
 
     override suspend fun fetchMovieStarList(index: Int): MovieStarListResponseData? {
-        if (index > 100) return null
+        if (index < 0 || index > 100) return null
         return runCatching { movieApi.fetchMovieStarList(KEY, index).await() }.getOrNull()
     }
 }

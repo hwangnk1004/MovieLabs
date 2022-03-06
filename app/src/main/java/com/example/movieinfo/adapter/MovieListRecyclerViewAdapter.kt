@@ -16,6 +16,10 @@ class MovieListRecyclerViewAdapter :
         setHasStableIds(true)
     }
 
+    override fun getItemCount(): Int {
+        return currentList.size
+    }
+
     override fun getItem(position: Int): MovieUiModel {
         return currentList[position]
     }
@@ -58,7 +62,7 @@ class MovieListRecyclerViewAdapter :
     companion object {
         val diffUtil = object : DiffUtil.ItemCallback<MovieUiModel>() {
             override fun areItemsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {
-                return newItem.movieKind == oldItem.movieKind
+                return newItem === oldItem
             }
 
             override fun areContentsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {

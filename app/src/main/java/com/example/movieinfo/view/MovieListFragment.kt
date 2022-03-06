@@ -1,6 +1,7 @@
 package com.example.movieinfo.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,14 +42,11 @@ class MovieListFragment : Fragment() {
             adapter = movieListRecyclerViewAdapter
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        || newState == RecyclerView.SCROLL_STATE_DRAGGING
-                    ) {
-                        if (recyclerView.canScrollVertically(-1).not()) {
-                            movieListViewModel.fetchInit()
-                        } else if (recyclerView.canScrollVertically(1).not()) {
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        if (recyclerView.canScrollVertically(1).not()) {
                             movieListViewModel.fetchMore()
+                        } else if (recyclerView.canScrollVertically(-1).not()) {
+                            movieListViewModel.fetchInit()
                         }
                     }
                 }

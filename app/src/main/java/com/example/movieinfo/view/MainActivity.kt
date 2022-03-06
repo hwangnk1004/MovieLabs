@@ -29,15 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initPager() {
-        binding.apply {
-            mainViewPager.registerOnPageChangeCallback(object :
-                ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    bottomNavigation.menu.getItem(position).isChecked = true
-                }
-            })
-        }
+        binding.mainViewPager.isUserInputEnabled = false
     }
 
     private fun initBottomNavigation() {

@@ -15,28 +15,34 @@
         android:layout_height="wrap_content"
         tools:context=".view.MovieStarListFragment">
 
-        <TextView
-            android:id="@+id/movie_star_list_title_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/movie_star_list_title"
-            android:textColor="@color/movie_black"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/movie_star_list_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/background_title_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/movie_star_list_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_star_list_title"
+                android:textColor="@color/app_main_black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/movie_star_list_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/divider_height"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/movie_black"
-            app:layout_constraintTop_toBottomOf="@id/movie_star_list_title_text_view" />
+            android:layout_height="@dimen/item_view_height"
+            android:background="@color/movie_view_grey"
+            app:layout_constraintTop_toBottomOf="@id/movie_star_list_title_layout" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movie_star_list_recycler_view"
@@ -45,7 +51,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movie_star_list_view"/>
+            app:layout_constraintTop_toBottomOf="@id/movie_star_list_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

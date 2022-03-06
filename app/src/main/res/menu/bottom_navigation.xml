@@ -3,9 +3,11 @@
     <item
         android:id="@+id/movie_list"
         android:enabled="true"
+        android:icon="@drawable/round_movie_black_24"
         android:title="@string/bottom_navigation_movie_info" />
     <item
         android:id="@+id/movie_star_list"
         android:enabled="true"
+        android:icon="@drawable/round_recent_actors_black_24"
         android:title="@string/bottom_navigation_movie_star_info" />
 </menu>

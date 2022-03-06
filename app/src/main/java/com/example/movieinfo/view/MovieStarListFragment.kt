@@ -43,13 +43,11 @@ class MovieStarListFragment : Fragment() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        || newState == RecyclerView.SCROLL_STATE_DRAGGING
-                    ) {
-                        if (recyclerView.canScrollVertically(-1).not()) {
-                            movieStarListViewModel.fetchInit()
-                        } else if (recyclerView.canScrollVertically(1).not()) {
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        if (recyclerView.canScrollVertically(1).not()) {
                             movieStarListViewModel.fetchMore()
+                        } else if (recyclerView.canScrollVertically(-1).not()) {
+                            movieStarListViewModel.fetchInit()
                         }
                     }
                 }
