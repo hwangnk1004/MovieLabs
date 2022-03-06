@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieinfo.model.moviestarlist.MovieStarListData
-import com.example.movieinfo.model.moviestarlist.MovieStarListDataUiModel
+import com.example.movieinfo.model.moviestarlist.MovieStarUiModel
 import com.example.movieinfo.repository.MovieRepository
 import com.example.movieinfo.repository.RemoteMovieDataSource
 import kotlinx.coroutines.launch
@@ -14,14 +14,14 @@ class MovieStarListViewModel : ViewModel() {
 
     private val repo = MovieRepository(RemoteMovieDataSource())
 
-    private val _movieStarListData = MutableLiveData<List<MovieStarListDataUiModel>>()
-    val movieStarListData: LiveData<List<MovieStarListDataUiModel>> = _movieStarListData
+    private val _movieStarListData = MutableLiveData<List<MovieStarUiModel>>()
+    val mMovieStar: LiveData<List<MovieStarUiModel>> = _movieStarListData
 
     fun fetchMovieStarList() {
         viewModelScope.launch {
             val result: MovieStarListData? = repo.fetchMovieStarList(false)?.movieStarListData
             val movieStarUiModelList = result?.movieStar?.map { data ->
-                MovieStarListDataUiModel.newInstance(data)
+                MovieStarUiModel.newInstance(data)
             }.orEmpty()
 
             _movieStarListData.value = movieStarUiModelList
@@ -34,7 +34,7 @@ class MovieStarListViewModel : ViewModel() {
                 repo.fetchMovieStarList(false)?.movieStarListData ?: return@launch
 
             val movieStarUiModelList = result.movieStar?.map { data ->
-                MovieStarListDataUiModel.newInstance(data)
+                MovieStarUiModel.newInstance(data)
             }.orEmpty()
 
             _movieStarListData.value = movieStarUiModelList
@@ -47,7 +47,7 @@ class MovieStarListViewModel : ViewModel() {
                 repo.fetchMovieStarList(true)?.movieStarListData ?: return@launch
 
             val movieStarUiModelList = result.movieStar?.map { data ->
-                MovieStarListDataUiModel.newInstance(data)
+                MovieStarUiModel.newInstance(data)
             }.orEmpty()
 
             _movieStarListData.value = movieStarUiModelList

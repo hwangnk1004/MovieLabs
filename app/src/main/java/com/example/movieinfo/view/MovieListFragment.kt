@@ -16,7 +16,7 @@ class MovieListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieListBinding
     private val movieListViewModel: MovieListViewModel by viewModels()
-    private lateinit var movieListRecyclerViewAdapter: MovieListRecyclerViewAdapter
+    private val movieListRecyclerViewAdapter by lazy { MovieListRecyclerViewAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +35,6 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        movieListRecyclerViewAdapter = MovieListRecyclerViewAdapter()
-
         binding.movieListRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             isNestedScrollingEnabled = false
@@ -63,8 +61,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun subscribeUi() {
-        movieListViewModel.movieListData.observe(viewLifecycleOwner) {
-            movieListRecyclerViewAdapter.movieList = it
+        movieListViewModel.mMovie.observe(viewLifecycleOwner) {
+            it.let {
+                movieListRecyclerViewAdapter.submitList(it)
+            }
         }
     }
 

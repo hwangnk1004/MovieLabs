@@ -11,13 +11,13 @@ interface MovieApiService {
     @GET("movie/searchMovieList.json")
     fun fetchMovieList(
         @Query("key") key: String,
-        @Query("itemPerPage") curPage: Int
+        @Query("itemPerPage") itemPerPage: Int
     ): Call<MovieListResponseData>
 
     @GET("people/searchPeopleList.json")
     fun fetchMovieStarList(
         @Query("key") key: String,
-        @Query("itemPerPage") curPage: Int
+        @Query("itemPerPage") itemPerPage: Int
     ): Call<MovieStarListResponseData>
 
 }

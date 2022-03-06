@@ -1,47 +1,35 @@
 package com.example.movieinfo.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieinfo.databinding.ItemMovieListBinding
-import com.example.movieinfo.model.movielist.MovieListDataUiModel
+import com.example.movieinfo.model.movielist.MovieUiModel
 
 class MovieListRecyclerViewAdapter :
-    RecyclerView.Adapter<MovieListRecyclerViewAdapter.MovieListViewHolder>() {
+    ListAdapter<MovieUiModel, MovieListRecyclerViewAdapter.MovieViewHolder>(diffUtil) {
 
-    var movieList: List<MovieListDataUiModel> = emptyList()
-        @SuppressLint("NotifyDataSetChanged")
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
-        return MovieListViewHolder(
-            ItemMovieListBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent, false
-            )
-        )
+    init {
+        setHasStableIds(true)
     }
 
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-        holder.onBind(movieList[position], movieList.size, position)
+    override fun getItem(position: Int): MovieUiModel {
+        return currentList[position]
     }
 
-    override fun getItemCount(): Int {
-        return movieList.size
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
-    class MovieListViewHolder(var binding: ItemMovieListBinding) :
+    class MovieViewHolder(var binding: ItemMovieListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun onBind(item: MovieListDataUiModel, size: Int, position: Int) {
+        fun onBind(item: MovieUiModel) {
             binding.apply {
-                movieNameInputTextView.text = if (item.movieEnglishName?.isNotBlank() == true) {
+                movieNameInputTextView.text = if (item.movieEnglishName.isNotBlank()) {
                     item.movieName + "\n(${item.movieEnglishName})"
                 } else {
                     item.movieName
@@ -51,6 +39,32 @@ class MovieListRecyclerViewAdapter :
                 movieListInputNation.text = item.movieNation
                 movieListInputAlt.text = item.movieKind
             }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        return MovieViewHolder(
+            ItemMovieListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent, false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.onBind(currentList[position])
+    }
+
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<MovieUiModel>() {
+            override fun areItemsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {
+                return oldItem.movieKind == newItem.movieKind
+            }
+
         }
     }
 }
