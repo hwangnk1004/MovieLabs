@@ -62,7 +62,7 @@ class MovieListRecyclerViewAdapter :
     companion object {
         val diffUtil = object : DiffUtil.ItemCallback<MovieUiModel>() {
             override fun areItemsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {
-                return newItem.toString() == oldItem.toString()
+                return newItem == oldItem
             }
 
             override fun areContentsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {

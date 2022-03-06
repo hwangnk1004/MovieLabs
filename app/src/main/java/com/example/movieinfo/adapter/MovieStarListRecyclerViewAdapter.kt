@@ -69,7 +69,7 @@ class MovieStarListRecyclerViewAdapter :
                 oldItem: MovieStarUiModel,
                 newItem: MovieStarUiModel
             ): Boolean {
-                return newItem.toString() == oldItem.toString()
+                return newItem == oldItem
             }
 
             override fun areContentsTheSame(
