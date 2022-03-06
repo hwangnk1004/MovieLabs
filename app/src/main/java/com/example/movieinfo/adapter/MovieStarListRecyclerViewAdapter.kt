@@ -69,14 +69,15 @@ class MovieStarListRecyclerViewAdapter :
                 oldItem: MovieStarUiModel,
                 newItem: MovieStarUiModel
             ): Boolean {
-                return oldItem == newItem
+                return newItem.movieStarEnglishName == oldItem.movieStarEnglishName
             }
 
             override fun areContentsTheSame(
                 oldItem: MovieStarUiModel,
                 newItem: MovieStarUiModel
             ): Boolean {
-                return oldItem.movieStarEnglishName == newItem.movieStarEnglishName
+
+                return newItem == oldItem
             }
 
         }

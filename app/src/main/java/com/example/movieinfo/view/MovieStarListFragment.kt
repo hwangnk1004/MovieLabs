@@ -62,7 +62,7 @@ class MovieStarListFragment : Fragment() {
     }
 
     private fun subscribeUi() {
-        movieStarListViewModel.mMovieStar.observe(viewLifecycleOwner) {
+        movieStarListViewModel.movieStartListData.observe(viewLifecycleOwner) {
             it.let {
                 movieStarListRecyclerViewAdapter.submitList(it)
             }

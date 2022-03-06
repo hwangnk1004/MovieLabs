@@ -15,7 +15,7 @@ class MovieStarListViewModel : ViewModel() {
     private val repo = MovieRepository(RemoteMovieDataSource())
 
     private val _movieStarListData = MutableLiveData<List<MovieStarUiModel>>()
-    val mMovieStar: LiveData<List<MovieStarUiModel>> = _movieStarListData
+    val movieStartListData: LiveData<List<MovieStarUiModel>> = _movieStarListData
 
     fun fetchMovieStarList() {
         viewModelScope.launch {
