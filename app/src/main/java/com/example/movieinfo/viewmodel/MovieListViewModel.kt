@@ -30,10 +30,11 @@ class MovieListViewModel : ViewModel() {
     fun fetchMore() {
         viewModelScope.launch {
             val result: MovieListData = repo.fetchMovieList(false)?.movieListResult ?: return@launch
+
             val movieUiModelList = result.movie?.map { data ->
                 MovieUiModel.newInstance(data)
             }.orEmpty()
-
+            
             _movieListData.value = movieUiModelList
         }
     }

@@ -1,5 +1,6 @@
 package com.example.movieinfo.repository
 
+import android.util.Log
 import com.example.movieinfo.model.movielist.MovieListResponseData
 import com.example.movieinfo.model.moviestarlist.MovieStarListResponseData
 import com.example.movieinfo.network.ApiUrls
