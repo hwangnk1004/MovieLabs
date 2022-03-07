@@ -34,8 +34,9 @@ class MovieListViewModel : ViewModel() {
             val movieUiModelList = result.movie?.map { data ->
                 MovieUiModel.newInstance(data)
             }.orEmpty()
-            
-            _movieListData.value = movieUiModelList
+
+            val currentMovieUiList = _movieListData.value.orEmpty()
+            _movieListData.value = currentMovieUiList.plus(movieUiModelList)
         }
     }
 

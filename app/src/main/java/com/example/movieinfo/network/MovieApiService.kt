@@ -17,7 +17,8 @@ interface MovieApiService {
     @GET("people/searchPeopleList.json")
     fun fetchMovieStarList(
         @Query("key") key: String,
-        @Query("curPage") curPage: Int
+        @Query("curPage") curPage: Int,
+        @Query("itemPerPage") itemPerPage: Int
     ): Call<MovieStarListResponseData>
 
 }

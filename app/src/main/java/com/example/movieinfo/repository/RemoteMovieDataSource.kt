@@ -1,6 +1,5 @@
 package com.example.movieinfo.repository
 
-import android.util.Log
 import com.example.movieinfo.model.movielist.MovieListResponseData
 import com.example.movieinfo.model.moviestarlist.MovieStarListResponseData
 import com.example.movieinfo.network.ApiUrls
@@ -36,6 +35,6 @@ class RemoteMovieDataSource : MovieDataSource {
 
     override suspend fun fetchMovieStarList(index: Int): MovieStarListResponseData? {
         if (index < 0 || index > 100) return null
-        return runCatching { movieApi.fetchMovieStarList(KEY, index).await() }.getOrNull()
+        return runCatching { movieApi.fetchMovieStarList(KEY, index, 12).await() }.getOrNull()
     }
 }

@@ -1,5 +1,6 @@
 package com.example.movieinfo.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,8 +37,9 @@ class MovieStarListViewModel : ViewModel() {
             val movieStarUiModelList = result.movieStar?.map { data ->
                 MovieStarUiModel.newInstance(data)
             }.orEmpty()
+            val currentMovieStarUiList = _movieStarListData.value.orEmpty()
+            _movieStarListData.value = currentMovieStarUiList.plus(movieStarUiModelList)
 
-            _movieStarListData.value = movieStarUiModelList
         }
     }
 
