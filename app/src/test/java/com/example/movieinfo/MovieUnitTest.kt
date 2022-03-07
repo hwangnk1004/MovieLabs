@@ -23,21 +23,19 @@ import org.mockito.junit.MockitoJUnitRunner
 class MovieUnitTest {
 
     @Test
-    fun `영화 api 호출시, 응답 데이터(Movie)가 null 일 경우, MovieUiModel 에서 빈 문자열로 초기화 되는지`() =
-        runBlocking<Unit> {
-            //given
-            val movieEmpty = Movie(null, null, null, null, null, null)
-            val movieUiModel = MovieUiModel.newInstance(movieEmpty)
+    fun `영화 api 호출시, 응답 데이터(Movie)가 null 일 경우, MovieUiModel 에서 빈 문자열로 초기화 되는지`() {
+        //given
+        val movieEmpty = Movie(null, null, null, null, null, null)
+        val movieUiModel = MovieUiModel.newInstance(movieEmpty)
 
-            // then
-            assertEquals(movieUiModel.movieName, "")
-            assertEquals(movieUiModel.movieEnglishName, "")
-            assertEquals(movieUiModel.movieProductYear, "")
-            assertEquals(movieUiModel.movieType, "")
-            assertEquals(movieUiModel.movieNation, "")
-            assertEquals(movieUiModel.movieKind, "")
-
-        }
+        // then
+        assertEquals(movieUiModel.movieName, "")
+        assertEquals(movieUiModel.movieEnglishName, "")
+        assertEquals(movieUiModel.movieProductYear, "")
+        assertEquals(movieUiModel.movieType, "")
+        assertEquals(movieUiModel.movieNation, "")
+        assertEquals(movieUiModel.movieKind, "")
+    }
 
     @Test
     fun `repository 에서 페이지 인덱스를 올바르게 호출하는지`() = runBlocking<Unit> {
